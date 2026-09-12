@@ -124,19 +124,19 @@
 
       <section class="ticker" aria-label="Service highlights">
         <div class="ticker-track">
-          <span>Craft cocktails</span><i></i><span>Warm hospitality</span><i></i
-          ><span>Made for your occasion</span><i></i>
-          <span aria-hidden="true">Craft cocktails</span
-          ><i aria-hidden="true"></i
-          ><span aria-hidden="true">Warm hospitality</span
-          ><i aria-hidden="true"></i
-          ><span aria-hidden="true">Made for your occasion</span
-          ><i aria-hidden="true"></i>
+          <div class="ticker-group">
+            <span>Craft cocktails</span><i></i><span>Warm hospitality</span
+            ><i></i><span>Made for your occasion</span><i></i>
+          </div>
+          <div class="ticker-group" aria-hidden="true">
+            <span>Craft cocktails</span><i></i><span>Warm hospitality</span
+            ><i></i><span>Made for your occasion</span><i></i>
+          </div>
         </div>
       </section>
 
       <section class="intro section" aria-labelledby="intro-title">
-        <div class="section-index">01 / THE EXPERIENCE</div>
+        <div class="section-index">The Experience</div>
         <div class="intro-grid">
           <h2 id="intro-title" class="reveal">
             You bring the people.<br /><span>We’ll raise the bar.</span>
@@ -159,7 +159,7 @@
         id="services"
         aria-labelledby="services-title"
       >
-        <div class="section-index light">02 / WHAT WE DO</div>
+        <div class="section-index light">What We Do</div>
         <div class="services-heading reveal">
           <p class="eyebrow">One less thing to manage</p>
           <h2 id="services-title">
@@ -168,7 +168,10 @@
         </div>
         <div class="service-list">
           <article class="service-row reveal">
-            <span class="service-number">01</span>
+            <span class="service-icon" aria-hidden="true"
+              ><svg viewBox="0 0 48 48">
+                <path d="M10 8h28L26 24v12m-8 4h16M15 14h18" /></svg
+            ></span>
             <h3>Craft Cocktails</h3>
             <p>
               Handcrafted drinks prepared for the pace and personality of your
@@ -176,7 +179,10 @@
             </p>
           </article>
           <article class="service-row reveal">
-            <span class="service-number">02</span>
+            <span class="service-icon" aria-hidden="true"
+              ><svg viewBox="0 0 48 48">
+                <path d="M14 9h20l-2 30H16L14 9Zm1 8h18M22 5l7 12" /></svg
+            ></span>
             <h3>Full Drink Service</h3>
             <p>
               From cocktails to water and soft drinks, guests are cared for
@@ -184,7 +190,12 @@
             </p>
           </article>
           <article class="service-row reveal">
-            <span class="service-number">03</span>
+            <span class="service-icon" aria-hidden="true"
+              ><svg viewBox="0 0 48 48">
+                <path
+                  d="M24 27c6 0 11-5 11-11H13c0 6 5 11 11 11Zm0 0v12m-8 0h16M10 12l-4-3m32 3 4-3M24 8V3"
+                /></svg
+            ></span>
             <h3>Guest-First Hospitality</h3>
             <p>
               Professional, personable bartending from someone who genuinely
@@ -192,15 +203,48 @@
             </p>
           </article>
         </div>
-        <div class="service-proof reveal">
-          <span>Owner operated</span>
-          <span>Bartending experience since 2021</span>
-          <span>Born &amp; raised in Kapolei</span>
+        <div
+          class="service-proof reveal"
+          role="list"
+          aria-label="Why choose Island Bartending Services"
+        >
+          <article role="listitem">
+            <svg aria-hidden="true" viewBox="0 0 40 40">
+              <circle cx="20" cy="14" r="6" />
+              <path d="M9 34c1-8 5-12 11-12s10 4 11 12" /></svg
+            ><span>Personally led</span><strong>Owner operated</strong>
+          </article>
+          <article role="listitem">
+            <svg aria-hidden="true" viewBox="0 0 40 40">
+              <circle cx="20" cy="20" r="14" />
+              <path d="M20 11v10l7 4" /></svg
+            ><span>Behind the bar</span><strong>Since 2021</strong>
+          </article>
+          <article role="listitem">
+            <svg aria-hidden="true" viewBox="0 0 40 40">
+              <path d="M20 36s11-10 11-19a11 11 0 1 0-22 0c0 9 11 19 11 19Z" />
+              <circle cx="20" cy="17" r="4" /></svg
+            ><span>Local roots</span><strong>Kapolei born &amp; raised</strong>
+          </article>
         </div>
-        <p class="pricing-note reveal">
-          <strong>Custom event quotes.</strong> Pricing is based on your event
-          date, location, guest count, service time and bar needs.
-        </p>
+        <div class="pricing-card reveal">
+          <div>
+            <p class="eyebrow">Built around your event</p>
+            <h3>Custom event quotes</h3>
+          </div>
+          <p>
+            Pricing is based on your date, location, guest count, service time
+            and bar needs.
+          </p>
+          <a class="button button-inverse" href="#quote"
+            >Request a Quote<svg
+              class="icon-arrow"
+              aria-hidden="true"
+              viewBox="0 0 20 20"
+            >
+              <path d="M5 15 15 5M7 5h8v8" /></svg
+          ></a>
+        </div>
         <!-- Developer note: Confirm exactly what equipment, mixers, garnishes, cups, ice and alcohol are supplied before publishing a detailed inclusions list. -->
       </section>
 
@@ -210,7 +254,7 @@
         aria-labelledby="events-title"
       >
         <div class="events-copy reveal">
-          <div class="section-index">03 / MADE TO CELEBRATE</div>
+          <div class="section-index">Made to Celebrate</div>
           <h2 id="events-title">
             A good fit for<br /><em>your kind of gathering.</em>
           </h2>
@@ -218,20 +262,27 @@
             Planning something worth celebrating? Tell us what you have in mind
             and we’ll start with the details that make your event yours.
           </p>
-          <a class="text-link dark" href="#quote">Start your inquiry</a>
+          <a class="button button-dark" href="#quote"
+            >Start Your Inquiry<svg
+              class="icon-arrow"
+              aria-hidden="true"
+              viewBox="0 0 20 20"
+            >
+              <path d="M5 15 15 5M7 5h8v8" /></svg
+          ></a>
         </div>
-        <div class="event-stack" aria-label="Events served">
-          <div class="event-card reveal">
-            <span>01</span><strong>Weddings</strong>
+        <div class="event-stack" role="list" aria-label="Events served">
+          <div class="event-card reveal" role="listitem">
+            <strong>Weddings</strong>
           </div>
-          <div class="event-card reveal">
-            <span>02</span><strong>Birthdays</strong>
+          <div class="event-card reveal" role="listitem">
+            <strong>Birthdays</strong>
           </div>
-          <div class="event-card reveal">
-            <span>03</span><strong>Graduations</strong>
+          <div class="event-card reveal" role="listitem">
+            <strong>Graduations</strong>
           </div>
-          <div class="event-card reveal">
-            <span>04</span><strong>Private Events</strong>
+          <div class="event-card reveal" role="listitem">
+            <strong>Private Events</strong>
           </div>
         </div>
       </section>
@@ -241,21 +292,29 @@
         id="process"
         aria-labelledby="process-title"
       >
-        <div class="section-index">04 / HOW IT WORKS</div>
+        <div class="section-index">How It Works</div>
         <div class="process-heading reveal">
           <p class="eyebrow">Simple from the start</p>
           <h2 id="process-title">From inquiry<br /><em>to last call.</em></h2>
         </div>
         <div class="process-grid">
           <article class="process-step reveal">
-            <span>01</span>
+            <span class="process-icon" aria-hidden="true"
+              ><svg viewBox="0 0 56 56">
+                <path d="M12 11h32v34H12zM20 20h16M20 28h16M20 36h9" />
+                <path d="m37 8 6 6" /></svg
+            ></span>
             <h3>Tell us about your event</h3>
             <p>
               Share your date, location, guest count and what you’re planning.
             </p>
           </article>
           <article class="process-step reveal">
-            <span>02</span>
+            <span class="process-icon" aria-hidden="true"
+              ><svg viewBox="0 0 56 56">
+                <path d="M9 15h38v27H9zM9 17l19 15 19-15" />
+                <path d="m35 10 4-4m2 8 6-1" /></svg
+            ></span>
             <h3>Receive your custom quote</h3>
             <p>
               Matt reviews your event details and follows up with availability
@@ -263,7 +322,11 @@
             </p>
           </article>
           <article class="process-step reveal">
-            <span>03</span>
+            <span class="process-icon" aria-hidden="true"
+              ><svg viewBox="0 0 56 56">
+                <path d="M17 8h22l-3 38H20L17 8Zm2 12h18" />
+                <path d="M12 12 7 8m37 4 5-4M28 5V0" /></svg
+            ></span>
             <h3>Enjoy the celebration</h3>
             <p>
               With the bar in caring hands, you can stay present with your
@@ -285,7 +348,7 @@
           <span class="photo-tag">Kapolei born &amp; raised</span>
         </div>
         <div class="about-copy reveal">
-          <div class="section-index">05 / MEET MATT</div>
+          <div class="section-index">Meet Matt</div>
           <p class="eyebrow">Owner &amp; bartender</p>
           <h2 id="about-title">
             Service is<br /><em>the main ingredient.</em>
@@ -325,7 +388,7 @@
       </section>
 
       <section class="faq section" id="faq" aria-labelledby="faq-title">
-        <div class="section-index">06 / GOOD TO KNOW</div>
+        <div class="section-index light">Good to Know</div>
         <div class="faq-layout">
           <div class="faq-heading reveal">
             <p class="eyebrow">Before you inquire</p>
@@ -378,7 +441,7 @@
 
       <section class="quote section" id="quote" aria-labelledby="quote-title">
         <div class="quote-intro reveal">
-          <div class="section-index light">07 / LET’S TALK DETAILS</div>
+          <div class="section-index light">Let’s Talk Details</div>
           <p class="eyebrow">Now booking on Oʻahu</p>
           <h2 id="quote-title">
             Let’s make it<br /><em>a night to remember.</em>
@@ -388,8 +451,17 @@
             everything organized and ready to send directly to Matt.
           </p>
           <div class="direct-contact">
-            <a href="tel:+18086936461">808.693.6461</a>
+            <a href="tel:+18086936461"
+              ><svg aria-hidden="true" viewBox="0 0 24 24">
+                <path
+                  d="M7 3H4a1 1 0 0 0-1 1c0 9.4 7.6 17 17 17a1 1 0 0 0 1-1v-3l-5-2-2 3c-4-1.5-6.5-4-8-8l3-2-2-5Z"
+                /></svg
+              >808.693.6461</a
+            >
             <a href="mailto:islandbartendingservices@gmail.com"
+              ><svg aria-hidden="true" viewBox="0 0 24 24">
+                <rect x="3" y="5" width="18" height="14" rx="1" />
+                <path d="m4 7 8 6 8-6" /></svg
               >islandbartendingservices@gmail.com</a
             >
           </div>
@@ -399,12 +471,14 @@
             <label
               >First name<input
                 name="firstName"
+                type="text"
                 autocomplete="given-name"
                 required
             /></label>
             <label
               >Last name<input
                 name="lastName"
+                type="text"
                 autocomplete="family-name"
                 required
             /></label>
@@ -458,6 +532,7 @@
           <label
             >Event location<input
               name="location"
+              type="text"
               autocomplete="address-level2"
               placeholder="City or venue"
               required
@@ -466,6 +541,7 @@
             >Event timing <span>(optional)</span
             ><input
               name="eventTime"
+              type="text"
               placeholder="Approximate start and end time"
           /></label>
           <label
@@ -506,10 +582,12 @@
           href="https://www.instagram.com/islandbartendingservices/"
           target="_blank"
           rel="noopener noreferrer"
-          >Instagram
-          <svg class="icon-arrow" aria-hidden="true" viewBox="0 0 20 20">
-            <path d="M5 15 15 5M7 5h8v8" /></svg
-        ></a>
+          ><svg class="social-icon" aria-hidden="true" viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="5" />
+            <circle cx="12" cy="12" r="4" />
+            <circle cx="17.5" cy="6.5" r="1" /></svg
+          >Instagram ></a
+        >
         <a href="mailto:islandbartendingservices@gmail.com">Email</a>
       </div>
       <div class="footer-bottom">
