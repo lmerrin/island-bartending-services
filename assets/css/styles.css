@@ -182,7 +182,7 @@ select {
   z-index: -3;
 }
 .hero-media {
-  background: url("../images/matt-bartending-event.webp") center 32% / cover
+  background: url("../images/matt-bartending-event.webp") 58% 28% / cover
     no-repeat;
   transform: scale(1.01);
   animation: heroZoom 14s ease-out both;
@@ -330,30 +330,24 @@ h2 em {
 }
 .ticker {
   overflow: hidden;
-  background: var(--ink);
+  position: relative;
+  z-index: 2;
+  background: #0d0e0e;
   color: white;
   padding: 0.95rem 0;
   border-top: 1px solid rgba(199, 243, 107, 0.55);
 }
-.ticker-track {
+.ticker-group {
   display: flex;
-  width: max-content;
+  width: 100%;
   align-items: center;
+  justify-content: space-around;
+  gap: 2.4rem;
+  padding: 0 2.4rem;
   text-transform: uppercase;
   letter-spacing: 0.16em;
   font-size: 0.72rem;
   font-weight: 600;
-  animation: ticker 24s linear infinite;
-  will-change: transform;
-}
-.ticker-group {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 2.4rem;
-  min-width: 100vw;
-  padding: 0 2.4rem;
-  flex-shrink: 0;
 }
 .ticker i {
   width: 6px;
@@ -361,11 +355,6 @@ h2 em {
   background: var(--lime);
   border-radius: 50%;
   flex: 0 0 6px;
-}
-@keyframes ticker {
-  to {
-    transform: translateX(-50%);
-  }
 }
 .section {
   padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 6vw, 7rem);
@@ -402,6 +391,30 @@ h2 em {
   grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.7fr);
   gap: clamp(3rem, 10vw, 10rem);
   padding-top: clamp(3rem, 7vw, 6rem);
+}
+.intro-statement {
+  position: relative;
+  min-height: clamp(350px, 34vw, 530px);
+  padding-bottom: clamp(9rem, 15vw, 13rem);
+}
+.popup-bar {
+  position: absolute;
+  right: -1rem;
+  bottom: -0.75rem;
+  width: clamp(190px, 24vw, 330px);
+  max-width: 58%;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.4s ease;
+}
+.popup-bar .bar-canopy {
+  fill: var(--lime);
+}
+.intro-statement:hover .popup-bar {
+  transform: translateY(-7px) rotate(-1deg);
 }
 .intro h2 {
   font-family: var(--display);
@@ -444,32 +457,48 @@ h2 em {
   font-size: clamp(3rem, 6.5vw, 7rem);
 }
 .service-list {
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
 }
 .service-row {
-  display: grid;
-  grid-template-columns: 80px minmax(220px, 1fr) minmax(260px, 0.8fr);
-  gap: 2rem;
-  align-items: center;
-  padding: 2rem 0.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  min-height: 360px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: #151716;
   transition:
-    padding 0.25s,
-    background 0.25s;
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
 }
 .service-row:hover {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  background: rgba(255, 255, 255, 0.035);
+  transform: translateY(-8px);
+  border-color: var(--lime);
+  background: #1a1d1b;
+}
+.service-row:first-child {
+  color: var(--ink);
+  background: var(--lime);
+  border-color: var(--lime);
+}
+.service-row:first-child:hover {
+  background: #d1ff78;
 }
 .service-icon {
   display: grid;
   place-items: center;
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 4.75rem;
+  height: 4.75rem;
   border: 1px solid rgba(199, 243, 107, 0.55);
   border-radius: 50%;
   color: var(--lime);
+}
+.service-row:first-child .service-icon {
+  color: var(--ink);
+  border-color: rgba(13, 14, 14, 0.55);
 }
 .service-icon svg {
   width: 1.75rem;
@@ -481,7 +510,7 @@ h2 em {
   stroke-linejoin: round;
 }
 .service-row h3 {
-  margin: 0;
+  margin: auto 0 1rem;
   font-family: var(--display);
   font-size: clamp(1.5rem, 2.5vw, 2.5rem);
   font-weight: 500;
@@ -489,6 +518,9 @@ h2 em {
 .service-row p {
   color: #bfc8c4;
   margin: 0;
+}
+.service-row:first-child p {
+  color: #263015;
 }
 .events {
   display: grid;
@@ -533,13 +565,35 @@ h2 em {
   padding-left: 1.7rem;
   padding-right: 1.7rem;
 }
-.event-card::before {
-  content: "";
-  width: 0.7rem;
-  height: 0.7rem;
+.event-icon {
+  display: grid;
+  place-items: center;
+  width: 4rem;
+  height: 4rem;
+  flex: 0 0 4rem;
+  color: #426326;
+  border: 1px solid var(--line);
   border-radius: 50%;
-  background: var(--lime);
-  box-shadow: 0 0 0 6px rgba(120, 154, 53, 0.12);
+  transition:
+    color 0.3s,
+    background 0.3s,
+    border-color 0.3s,
+    transform 0.3s;
+}
+.event-icon svg {
+  width: 2rem;
+  height: 2rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.event-card:hover .event-icon {
+  color: var(--lime);
+  background: var(--ink);
+  border-color: var(--ink);
+  transform: rotate(-5deg);
 }
 .event-card strong {
   font-family: var(--display);
@@ -575,6 +629,21 @@ h2 em {
 }
 .about-copy .section-index {
   margin-bottom: 3rem;
+}
+.about-copy > .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--ink);
+  font-weight: 700;
+}
+.about-copy > .eyebrow::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  flex: 0 0 0.55rem;
+  border-radius: 50%;
+  background: #527526;
 }
 .about h2 {
   margin: 0 0 2rem;
@@ -857,7 +926,7 @@ h2 em {
     );
   }
   .hero-media {
-    background-position: 57% center;
+    background-position: 56% center;
   }
   .hero-note {
     display: none;
@@ -873,14 +942,25 @@ h2 em {
   .quote {
     grid-template-columns: 1fr;
   }
+  .intro-statement {
+    min-height: 0;
+    padding-bottom: 0;
+  }
+  .popup-bar {
+    position: static;
+    display: block;
+    width: min(72%, 320px);
+    max-width: none;
+    margin: 2.5rem 0 0 auto;
+  }
   .services-heading {
     gap: 1.5rem;
   }
-  .service-row {
-    grid-template-columns: 56px 1fr;
+  .service-list {
+    grid-template-columns: 1fr;
   }
-  .service-row p {
-    grid-column: 2;
+  .service-row {
+    min-height: 290px;
   }
   .events-copy {
     position: static;
@@ -923,6 +1003,19 @@ h2 em {
   }
 }
 @media (max-width: 520px) {
+  .ticker {
+    padding: 0;
+  }
+  .ticker-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    padding: 1rem 1.25rem;
+    text-align: center;
+  }
+  .ticker i {
+    display: none;
+  }
   .hero h1 {
     font-size: clamp(3.6rem, 20vw, 5.8rem);
   }
@@ -942,7 +1035,9 @@ h2 em {
     padding-right: 1.25rem;
   }
   .service-row {
+    min-height: 270px;
     gap: 0.75rem;
+    padding: 1.5rem;
   }
   .service-row h3 {
     font-size: 1.6rem;
@@ -994,7 +1089,7 @@ h2 em {
   letter-spacing: 0.01em;
 }
 .hero-media {
-  filter: grayscale(0.62) contrast(1.1);
+  filter: saturate(0.88) contrast(1.08);
 }
 .hero-shade {
   background:
