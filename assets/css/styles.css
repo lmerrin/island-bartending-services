@@ -394,54 +394,30 @@ h2 em {
 }
 .intro-statement {
   position: relative;
-  min-height: clamp(350px, 34vw, 530px);
-  padding-bottom: clamp(9rem, 15vw, 13rem);
+  min-height: clamp(300px, 29vw, 430px);
+  padding-bottom: clamp(5rem, 8vw, 7rem);
 }
-.popup-bar {
+.bar-badge {
   position: absolute;
-  right: -1rem;
-  bottom: -0.75rem;
-  width: clamp(190px, 24vw, 330px);
-  max-width: 58%;
-  fill: none;
-  stroke: var(--ink);
-  stroke-width: 3;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  transition: transform 0.4s ease;
+  right: 1rem;
+  bottom: 0;
+  width: clamp(104px, 11vw, 150px);
+  opacity: 0;
+  transform: translateY(18px) rotate(4deg);
+  transition:
+    opacity 0.55s ease,
+    transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
-.popup-bar .bar-canopy {
-  fill: var(--lime);
+.intro-statement.visible .bar-badge {
+  opacity: 1;
+  transform: none;
 }
-.popup-bar path,
-.popup-bar circle {
-  stroke-dasharray: 900;
-  stroke-dashoffset: 900;
+.bar-badge img {
+  width: 100%;
+  height: auto;
 }
-.intro-statement.visible .popup-bar path,
-.intro-statement.visible .popup-bar circle {
-  animation: draw-bar 1.35s ease-out 0.2s forwards;
-}
-.intro-statement.visible .popup-bar .bar-canopy {
-  animation:
-    draw-bar 1.35s ease-out 0.2s forwards,
-    canopy-in 0.55s ease-out 0.65s both;
-}
-@keyframes draw-bar {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes canopy-in {
-  from {
-    fill-opacity: 0;
-  }
-  to {
-    fill-opacity: 1;
-  }
-}
-.intro-statement:hover .popup-bar {
-  transform: translateY(-7px) rotate(-1deg);
+.bar-badge:hover {
+  transform: translateY(-5px) rotate(-2deg);
 }
 .intro h2 {
   font-family: var(--display);
@@ -549,16 +525,59 @@ h2 em {
 .service-row:first-child p {
   color: #263015;
 }
-.bar-signature {
-  display: block;
-  width: min(100%, 640px);
-  height: auto;
-  margin: clamp(3rem, 7vw, 6rem) auto 0;
+.drinks {
+  background: #e7e8e5;
 }
-.bar-signature-light {
-  padding: clamp(1rem, 2.5vw, 1.75rem);
-  background: var(--lime);
-  border-radius: 12rem 12rem 0 0;
+.drinks-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.55fr);
+  gap: clamp(2rem, 8vw, 8rem);
+  align-items: end;
+  margin-bottom: clamp(2.5rem, 6vw, 5rem);
+}
+.drinks h2 {
+  margin: 3rem 0 0;
+  font-family: var(--display);
+  font-size: clamp(3.3rem, 7vw, 7.4rem);
+  font-weight: 600;
+  line-height: 0.82;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+}
+.drinks h2 em {
+  color: #426326;
+}
+.drinks-heading > p {
+  max-width: 430px;
+  margin: 0 0 0.5rem;
+  font-size: 1.08rem;
+}
+.drink-gallery {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr 0.85fr;
+  gap: clamp(0.75rem, 1.8vw, 1.5rem);
+  align-items: start;
+}
+.drink-photo {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background: var(--ink);
+}
+.drink-photo img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.drink-photo-tall img {
+  aspect-ratio: 3 / 4;
+}
+.drink-photo-offset {
+  margin-top: clamp(2rem, 7vw, 6rem);
+}
+.drink-photo:hover img {
+  transform: scale(1.045);
 }
 .events {
   display: grid;
@@ -974,6 +993,7 @@ h2 em {
   }
   .intro-grid,
   .services-heading,
+  .drinks-heading,
   .events,
   .about,
   .moment,
@@ -984,12 +1004,11 @@ h2 em {
     min-height: 0;
     padding-bottom: 0;
   }
-  .popup-bar {
+  .bar-badge {
     position: static;
     display: block;
-    width: min(72%, 320px);
-    max-width: none;
-    margin: 2.5rem 0 0 auto;
+    width: 116px;
+    margin: 2rem 0 0 auto;
   }
   .services-heading {
     gap: 1.5rem;
@@ -999,6 +1018,13 @@ h2 em {
   }
   .service-row {
     min-height: 290px;
+  }
+  .drink-gallery {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+  .drink-photo-offset {
+    grid-column: 2;
+    margin-top: -18%;
   }
   .events-copy {
     position: static;
@@ -1076,6 +1102,13 @@ h2 em {
     min-height: 270px;
     gap: 0.75rem;
     padding: 1.5rem;
+  }
+  .drink-gallery {
+    grid-template-columns: 1fr;
+  }
+  .drink-photo-offset {
+    grid-column: auto;
+    margin-top: 0;
   }
   .service-row h3 {
     font-size: 1.6rem;
@@ -1474,8 +1507,8 @@ h2 em {
     opacity: 1;
     transform: none;
   }
-  .popup-bar path,
-  .popup-bar circle {
-    stroke-dashoffset: 0;
+  .bar-badge {
+    opacity: 1;
+    transform: none;
   }
 }
