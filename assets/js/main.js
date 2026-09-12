@@ -1,0 +1,46 @@
+const header = document.querySelector('[data-header]');
+const menuButton = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.site-nav');
+const year = document.querySelector('[data-year]');
+
+year.textContent = new Date().getFullYear();
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40), {passive:true});
+
+menuButton.addEventListener('click', () => {
+  const open = menuButton.getAttribute('aria-expanded') === 'true';
+  menuButton.setAttribute('aria-expanded', String(!open));
+  menuButton.classList.toggle('active', !open);
+  nav.classList.toggle('open', !open);
+  document.body.style.overflow = open ? '' : 'hidden';
+});
+
+nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.classList.remove('active');
+  nav.classList.remove('open');
+  document.body.style.overflow = '';
+}));
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+}, {threshold:.12});
+document.querySelectorAll('.reveal').forEach(item => observer.observe(item));
+
+document.getElementById('quote-form').addEventListener('submit', event => {
+  event.preventDefault();
+  const data = new FormData(event.currentTarget);
+  const subject = `Event inquiry: ${data.get('eventType')} on ${data.get('eventDate')}`;
+  const body = [
+    `Name: ${data.get('firstName')} ${data.get('lastName')}`,
+    `Email: ${data.get('email')}`,
+    `Phone: ${data.get('phone') || 'Not provided'}`,
+    `Event type: ${data.get('eventType')}`,
+    `Event date: ${data.get('eventDate')}`,
+    `Location: ${data.get('location')}`,
+    '',
+    'Event details:',
+    data.get('details')
+  ].join('\n');
+  document.getElementById('form-status').textContent = 'Opening your email app with the inquiry details…';
+  window.location.href = `mailto:islandbartendingservices@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+});
