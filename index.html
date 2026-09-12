@@ -43,6 +43,7 @@
     <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
       <a href="#services">Services</a>
       <a href="#events">Events</a>
+      <a href="#process">Process</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a class="button button-small" href="#quote">Get a Quote</a>
@@ -56,9 +57,9 @@
       <div class="hero-orbit orbit-one" aria-hidden="true"></div>
       <div class="hero-orbit orbit-two" aria-hidden="true"></div>
       <div class="hero-content reveal">
-        <p class="eyebrow">Mobile bartending · Oʻahu</p>
-        <h1>Your event.<br><em>Elevated.</em></h1>
-        <p class="hero-copy">Handcrafted cocktails, genuine hospitality and a mobile bar experience made to fit the occasion.</p>
+        <p class="eyebrow">Island Bartending Services · Oʻahu</p>
+        <h1>Mobile bartending<br><em>for your celebration.</em></h1>
+        <p class="hero-copy">Handcrafted cocktails, genuine hospitality and one less thing for you to manage.</p>
         <div class="hero-actions">
           <a class="button" href="#quote">Get a Quote <svg class="icon-arrow" aria-hidden="true" viewBox="0 0 20 20"><path d="M5 15 15 5M7 5h8v8"/></svg></a>
           <a class="text-link" href="#services">Explore the experience</a>
@@ -79,8 +80,8 @@
       <div class="intro-grid">
         <h2 id="intro-title" class="reveal">You bring the people.<br><span>We’ll raise the bar.</span></h2>
         <div class="intro-copy reveal">
-          <p>From the first pour to the final toast, Island Bartending Services keeps your guests refreshed and your celebration flowing.</p>
-          <p>Expect attentive service, thoughtfully made drinks and a bar experience that feels at home at your event.</p>
+          <p>Enjoy your celebration while Matt keeps the drinks flowing and your guests cared for.</p>
+          <p>Owner-operated mobile bartending with thoughtfully made drinks and welcoming service that feels at home at your event.</p>
         </div>
       </div>
     </section>
@@ -108,6 +109,12 @@
           <p>Professional, personable bartending from someone who genuinely enjoys bringing people together.</p>
         </article>
       </div>
+      <div class="service-proof reveal">
+        <span>Owner operated</span>
+        <span>Bartending experience since 2021</span>
+        <span>Born &amp; raised in Kapolei</span>
+      </div>
+      <p class="pricing-note reveal"><strong>Custom event quotes.</strong> Pricing is based on your event date, location, guest count, service time and bar needs.</p>
       <!-- Developer note: Confirm exactly what equipment, mixers, garnishes, cups, ice and alcohol are supplied before publishing a detailed inclusions list. -->
     </section>
 
@@ -126,13 +133,26 @@
       </div>
     </section>
 
+    <section class="process section" id="process" aria-labelledby="process-title">
+      <div class="section-index">04 / HOW IT WORKS</div>
+      <div class="process-heading reveal">
+        <p class="eyebrow">Simple from the start</p>
+        <h2 id="process-title">From inquiry<br><em>to last call.</em></h2>
+      </div>
+      <div class="process-grid">
+        <article class="process-step reveal"><span>01</span><h3>Tell us about your event</h3><p>Share your date, location, guest count and what you’re planning.</p></article>
+        <article class="process-step reveal"><span>02</span><h3>Receive your custom quote</h3><p>Matt reviews your event details and follows up with availability and next steps.</p></article>
+        <article class="process-step reveal"><span>03</span><h3>Enjoy the celebration</h3><p>With the bar in caring hands, you can stay present with your guests.</p></article>
+      </div>
+    </section>
+
     <section class="about section" id="about" aria-labelledby="about-title">
       <div class="about-photo reveal">
         <img src="assets/images/matt-mobile-bar.webp" width="900" height="1200" loading="lazy" alt="Matt Perry standing behind a handcrafted wooden mobile bar in Kapolei">
         <span class="photo-tag">Kapolei born &amp; raised</span>
       </div>
       <div class="about-copy reveal">
-        <div class="section-index">04 / MEET MATT</div>
+        <div class="section-index">05 / MEET MATT</div>
         <p class="eyebrow">Owner &amp; bartender</p>
         <h2 id="about-title">Service is<br><em>the main ingredient.</em></h2>
         <p class="lead">Aloha, I’m Matt Perry. I’m the owner and operator of Island Bartending Services.</p>
@@ -152,7 +172,7 @@
 
     <section class="quote section" id="quote" aria-labelledby="quote-title">
       <div class="quote-intro reveal">
-        <div class="section-index light">05 / LET’S TALK DETAILS</div>
+        <div class="section-index light">06 / LET’S TALK DETAILS</div>
         <p class="eyebrow">Now booking on Oʻahu</p>
         <h2 id="quote-title">Let’s make it<br><em>a night to remember.</em></h2>
         <p>Share a few event details below. Your email app will open with everything organized and ready to send directly to Matt.</p>
@@ -172,12 +192,18 @@
           <label>Event type<select name="eventType" required><option value="">Select one</option><option>Wedding</option><option>Birthday</option><option>Graduation</option><option>Private event</option><option>Other</option></select></label>
           <label>Event date<input name="eventDate" type="date" required></label>
         </div>
+        <div class="field-row">
+          <label>Estimated guest count<input name="guestCount" type="number" min="1" inputmode="numeric" placeholder="Approximate is okay" required></label>
+          <label>Event setting<select name="setting" required><option value="">Select one</option><option>Indoor</option><option>Outdoor</option><option>Both</option><option>Not sure yet</option></select></label>
+        </div>
         <label>Event location<input name="location" autocomplete="address-level2" placeholder="City or venue" required></label>
-        <label>Tell us about your event<textarea name="details" rows="4" placeholder="Guest count, timing and anything else you’d like Matt to know" required></textarea></label>
+        <label>Event timing <span>(optional)</span><input name="eventTime" placeholder="Approximate start and end time"></label>
+        <label>Tell us about your event<textarea name="details" rows="4" placeholder="What are you celebrating, and what would you like the bar experience to feel like?" required></textarea></label>
         <p class="form-note">Please do not include payment details or other sensitive information.</p>
         <button class="button button-submit" type="submit">Prepare My Inquiry <svg class="icon-arrow" aria-hidden="true" viewBox="0 0 20 20"><path d="M5 15 15 5M7 5h8v8"/></svg></button>
         <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
       </form>
+      <!-- Developer note: Add a visitor-facing FAQ only after Matt approves accurate answers about alcohol, inclusions, service area, booking lead time, staffing, deposits, cancellation and insurance. -->
     </section>
   </main>
 

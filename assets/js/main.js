@@ -36,7 +36,10 @@ document.getElementById('quote-form').addEventListener('submit', event => {
     `Phone: ${data.get('phone') || 'Not provided'}`,
     `Event type: ${data.get('eventType')}`,
     `Event date: ${data.get('eventDate')}`,
+    `Estimated guest count: ${data.get('guestCount')}`,
+    `Event setting: ${data.get('setting')}`,
     `Location: ${data.get('location')}`,
+    `Event timing: ${data.get('eventTime') || 'Not provided'}`,
     '',
     'Event details:',
     data.get('details')
