@@ -10,11 +10,14 @@
 - [ ] Confirm spelling: Honolulu and Oʻahu.
 - [ ] Confirm all published service and biography wording.
 - [ ] Confirm photo permissions for every person shown.
+- [ ] Select specific Instagram photos or videos and obtain the original files for full-quality website use.
 
 ## Content and business details
 
 - [ ] Confirm exact service area and any travel fees.
-- [ ] Confirm what Matt supplies and what the client supplies.
+- [x] Confirm Matt supplies the physical pop-up bar.
+- [x] Confirm mocktails are available.
+- [ ] Confirm remaining items Matt supplies and what the client supplies.
 - [ ] Confirm alcohol-purchasing responsibility and whether the business is insured.
 - [ ] Confirm event minimums, booking lead time, deposit and cancellation terms.
 - [ ] Confirm whether age-verification or responsible-service language is required.

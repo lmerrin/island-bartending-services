@@ -21,6 +21,7 @@ All website paths are relative, so the site will work inside a GitHub project UR
 - Connect a dedicated form endpoint if Matt wants submissions delivered without opening the visitor's email app. The current quote form safely prepares a pre-addressed email.
 - Confirm the final service area and all service inclusions before expanding service copy.
 - Replace the Open Graph image with a dedicated 1200 × 630 social-sharing graphic if desired.
+- Ask Matt to identify the strongest Instagram posts for the site and provide the original photo or video files; social-media downloads are compressed and may include people whose permission must be confirmed.
 
 ## Updating content
 

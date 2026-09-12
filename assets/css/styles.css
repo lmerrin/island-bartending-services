@@ -413,6 +413,33 @@ h2 em {
 .popup-bar .bar-canopy {
   fill: var(--lime);
 }
+.popup-bar path,
+.popup-bar circle {
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+}
+.intro-statement.visible .popup-bar path,
+.intro-statement.visible .popup-bar circle {
+  animation: draw-bar 1.35s ease-out 0.2s forwards;
+}
+.intro-statement.visible .popup-bar .bar-canopy {
+  animation:
+    draw-bar 1.35s ease-out 0.2s forwards,
+    canopy-in 0.55s ease-out 0.65s both;
+}
+@keyframes draw-bar {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes canopy-in {
+  from {
+    fill-opacity: 0;
+  }
+  to {
+    fill-opacity: 1;
+  }
+}
 .intro-statement:hover .popup-bar {
   transform: translateY(-7px) rotate(-1deg);
 }
@@ -521,6 +548,17 @@ h2 em {
 }
 .service-row:first-child p {
   color: #263015;
+}
+.bar-signature {
+  display: block;
+  width: min(100%, 640px);
+  height: auto;
+  margin: clamp(3rem, 7vw, 6rem) auto 0;
+}
+.bar-signature-light {
+  padding: clamp(1rem, 2.5vw, 1.75rem);
+  background: var(--lime);
+  border-radius: 12rem 12rem 0 0;
 }
 .events {
   display: grid;
@@ -1435,5 +1473,9 @@ h2 em {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+  .popup-bar path,
+  .popup-bar circle {
+    stroke-dashoffset: 0;
   }
 }
