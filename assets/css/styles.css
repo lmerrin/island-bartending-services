@@ -155,6 +155,20 @@ select {
   margin: 7px 0;
   transition: 0.25s;
 }
+.menu-cocktail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transform: scale(0.65);
+  transition: opacity 0.2s ease, transform 0.3s ease;
+}
 .icon-arrow {
   width: 1.05rem;
   height: 1.05rem;
@@ -301,27 +315,23 @@ h2 em {
   letter-spacing: 0.14em;
   color: #d4dad7;
 }
-.orbit-one,
-.orbit-two {
+.hero-island {
   position: absolute;
-  border: 1px solid rgba(199, 243, 107, 0.35);
-  border-radius: 50%;
   z-index: -1;
+  top: 10%;
+  right: -3%;
+  width: min(58vw, 900px);
+  height: auto;
+  opacity: 0.34;
   pointer-events: none;
+  filter: drop-shadow(0 0 18px rgba(199, 243, 107, 0.12));
+  animation: islandDraw 1.2s ease-out both;
 }
-.orbit-one {
-  width: 19rem;
-  height: 19rem;
-  right: -4rem;
-  top: 18%;
-  animation: float 7s ease-in-out infinite;
-}
-.orbit-two {
-  width: 7rem;
-  height: 7rem;
-  left: 49%;
-  top: 17%;
-  animation: float 5s ease-in-out -2s infinite;
+@keyframes islandDraw {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
 }
 @keyframes float {
   50% {
@@ -475,13 +485,15 @@ h2 em {
   grid-template-columns: repeat(3, 1fr);
   gap: 3px;
   margin-top: clamp(1.5rem, 3vw, 2.5rem);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1120px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 .cocktail-rail figure {
   position: relative;
-  display: grid;
-  grid-template-rows: clamp(160px, 16vw, 240px) auto;
+  aspect-ratio: 4 / 5;
   margin: 0;
   overflow: hidden;
   background: #171918;
@@ -490,23 +502,23 @@ h2 em {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 55%;
+  object-position: center;
   filter: saturate(0.92) contrast(1.04);
   transition:
     transform 0.65s cubic-bezier(0.2, 0.7, 0.2, 1),
     filter 0.4s ease;
-}
-.cocktail-rail figure:nth-child(2) img {
-  object-position: center 62%;
 }
 .cocktail-rail figure:hover img {
   transform: scale(1.045);
   filter: saturate(1.08) contrast(1.04);
 }
 .cocktail-rail figcaption {
-  min-height: 106px;
-  padding: 1rem 1.1rem 1.15rem;
-  background: #171918;
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 1;
+  min-height: 0;
+  padding: 4rem 1.2rem 1.2rem;
+  background: linear-gradient(transparent, rgba(7, 8, 8, 0.94));
 }
 .cocktail-rail figcaption strong,
 .cocktail-rail figcaption span {
@@ -592,46 +604,24 @@ h2 em {
 }
 .about {
   background: var(--cream);
+}
+.about > .section-index {
+  margin-bottom: clamp(3rem, 6vw, 6rem);
+}
+.about-layout {
   display: grid;
-  grid-template-columns: minmax(280px, 0.68fr) minmax(380px, 1fr);
-  gap: clamp(3rem, 7vw, 7rem);
-  align-items: center;
+  grid-template-columns: minmax(360px, 1.15fr) minmax(320px, 0.85fr);
+  gap: clamp(3rem, 9vw, 10rem);
+  align-items: end;
 }
-.about-photo {
-  position: relative;
-  width: 100%;
-  max-width: 560px;
-  justify-self: center;
-}
-.about-photo img {
-  width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
-  object-position: center 63%;
-  filter: saturate(0.82) contrast(1.04);
-}
-.photo-tag {
-  position: absolute;
-  right: -2rem;
-  bottom: 3rem;
-  background: var(--lime);
-  padding: 1rem 1.4rem;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 0.66rem;
-  transform: rotate(-3deg);
-}
-.about-copy .section-index {
-  margin-bottom: 3rem;
-}
-.about-copy > .eyebrow {
+.about-heading > .eyebrow {
   display: flex;
   align-items: center;
   gap: 0.65rem;
   color: var(--ink);
   font-weight: 700;
 }
-.about-copy > .eyebrow::before {
+.about-heading > .eyebrow::before {
   content: "";
   width: 0.55rem;
   height: 0.55rem;
@@ -640,7 +630,7 @@ h2 em {
   background: #527526;
 }
 .about h2 {
-  margin: 0 0 2rem;
+  margin: 0;
 }
 .about h2 em {
   color: #558b7d;
@@ -649,37 +639,40 @@ h2 em {
   font-size: 1.35rem;
   line-height: 1.4;
 }
-.about-copy > p {
-  max-width: 600px;
-}
-.about-moment {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  align-items: center;
-  gap: 1.4rem;
-  max-width: 610px;
-  margin: 2rem 0 0;
-  padding-top: 1.5rem;
+.about-story {
+  max-width: 620px;
+  padding-top: 2rem;
   border-top: 1px solid var(--line);
 }
-.about-moment img {
-  width: 150px;
-  height: 112px;
-  object-fit: cover;
-  object-position: center 35%;
+.about-principle {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.35fr) minmax(320px, 1fr);
+  gap: clamp(2rem, 7vw, 8rem);
+  align-items: start;
+  margin-top: clamp(4rem, 8vw, 8rem);
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+  border-top: 1px solid var(--ink);
 }
-.about-moment figcaption {
+.about-principle span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.about-principle p {
+  max-width: 980px;
+  margin: 0;
   font-family: var(--serif);
-  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  font-size: clamp(2rem, 4.3vw, 5rem);
   font-style: italic;
-  line-height: 1.15;
+  line-height: 1;
   color: #426326;
 }
 .quote {
   background: #12201d;
   color: white;
   display: grid;
-  grid-template-columns: minmax(260px, 0.55fr) minmax(520px, 1.45fr);
+  grid-template-columns: minmax(360px, 0.72fr) minmax(620px, 1.55fr);
   gap: clamp(2.5rem, 6vw, 6rem);
   align-items: start;
 }
@@ -687,6 +680,8 @@ h2 em {
   margin-bottom: 4rem;
 }
 .quote h2 {
+  font-size: clamp(3.6rem, 5.4vw, 6.5rem);
+  line-height: 0.88;
   margin-bottom: 2rem;
 }
 .quote-intro > p:not(.eyebrow) {
@@ -884,12 +879,14 @@ h2 em {
   }
   .menu-toggle {
     z-index: 2;
+    position: relative;
   }
-  .menu-toggle.active span:nth-of-type(1) {
-    transform: translateY(4px) rotate(45deg);
+  .menu-toggle.active span:not(.sr-only) {
+    opacity: 0;
   }
-  .menu-toggle.active span:nth-of-type(2) {
-    transform: translateY(-4px) rotate(-45deg);
+  .menu-toggle.active .menu-cocktail {
+    opacity: 1;
+    transform: scale(1);
   }
   .hero {
     padding-bottom: 4rem;
@@ -905,10 +902,13 @@ h2 em {
   .hero-media {
     background-position: 56% center;
   }
-  .hero-note {
-    display: none;
+  .hero-island {
+    top: 12%;
+    right: -24%;
+    width: min(92vw, 720px);
+    opacity: 0.25;
   }
-  .orbit-two {
+  .hero-note {
     display: none;
   }
   .intro-grid,
@@ -945,11 +945,10 @@ h2 em {
   .about {
     gap: 4rem;
   }
-  .about-photo {
-    max-width: 520px;
-  }
-  .photo-tag {
-    right: -0.5rem;
+  .about-layout,
+  .about-principle {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
   .footer-meta {
     flex-wrap: wrap;
@@ -984,6 +983,12 @@ h2 em {
   .hero h1 {
     font-size: clamp(3.6rem, 20vw, 5.8rem);
   }
+  .hero-island {
+    top: 18%;
+    right: -48%;
+    width: 135vw;
+    opacity: 0.19;
+  }
   .hero-actions {
     align-items: flex-start;
     flex-direction: column;
@@ -1009,14 +1014,10 @@ h2 em {
     gap: 2px;
   }
   .cocktail-rail figure {
-    grid-template-columns: minmax(130px, 0.85fr) 1.15fr;
-    grid-template-rows: minmax(170px, 48vw);
+    aspect-ratio: 4 / 5;
   }
   .cocktail-rail figcaption {
-    display: flex;
-    min-height: 0;
-    flex-direction: column;
-    justify-content: center;
+    padding: 4rem 1rem 1rem;
   }
   .service-row h3 {
     font-size: 1.6rem;
@@ -1033,6 +1034,14 @@ h2 em {
   }
   .footer-brand {
     font-size: 3.5rem;
+  }
+}
+@media (max-width: 1100px) {
+  .quote {
+    grid-template-columns: 1fr;
+  }
+  .quote-intro {
+    max-width: 720px;
   }
 }
 .hero h1,
@@ -1079,10 +1088,6 @@ h2 em {
       rgba(5, 5, 5, 0.18) 80%
     ),
     linear-gradient(0deg, rgba(5, 5, 5, 0.88), transparent 58%);
-}
-.orbit-one,
-.orbit-two {
-  border-color: rgba(199, 243, 107, 0.34);
 }
 .intro h2 span,
 .events h2 em,
@@ -1209,12 +1214,6 @@ h2 em {
 }
 .process-step p {
   color: #555b58;
-}
-.about-photo img {
-  filter: saturate(1.06) contrast(1.02);
-}
-.photo-tag {
-  background: var(--lime);
 }
 .quote {
   background: #171818;
