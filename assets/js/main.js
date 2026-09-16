@@ -2,6 +2,12 @@ const header = document.querySelector("[data-header]");
 const menuButton = document.querySelector(".menu-toggle");
 const nav = document.querySelector(".site-nav");
 const year = document.querySelector("[data-year]");
+const sectionLinks = [...nav.querySelectorAll('a[href^="#"]')].filter(
+  (link) => link.getAttribute("href") !== "#quote",
+);
+const trackedSections = sectionLinks
+  .map((link) => document.querySelector(link.getAttribute("href")))
+  .filter(Boolean);
 
 year.textContent = new Date().getFullYear();
 document.querySelector('input[name="eventDate"]').min = new Date()
@@ -9,9 +15,29 @@ document.querySelector('input[name="eventDate"]').min = new Date()
   .split("T")[0];
 window.addEventListener(
   "scroll",
-  () => header.classList.toggle("scrolled", window.scrollY > 40),
+  () => {
+    header.classList.toggle("scrolled", window.scrollY > 40);
+    updateActiveNav();
+  },
   { passive: true },
 );
+
+function updateActiveNav() {
+  const marker = window.scrollY + window.innerHeight * 0.35;
+  let activeId = "";
+
+  trackedSections.forEach((section) => {
+    if (section.offsetTop <= marker) activeId = section.id;
+  });
+
+  sectionLinks.forEach((link) => {
+    const isCurrent = link.getAttribute("href") === `#${activeId}`;
+    if (isCurrent) link.setAttribute("aria-current", "location");
+    else link.removeAttribute("aria-current");
+  });
+}
+
+updateActiveNav();
 
 function setMenu(open, returnFocus = false) {
   menuButton.setAttribute("aria-expanded", String(open));
@@ -21,7 +47,6 @@ function setMenu(open, returnFocus = false) {
   menuButton.classList.toggle("active", open);
   nav.classList.toggle("open", open);
   document.body.style.overflow = open ? "hidden" : "";
-  if (open) nav.querySelector("a").focus();
   if (!open && returnFocus) menuButton.focus();
 }
 
@@ -60,6 +85,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 window.addEventListener("resize", () => {
+  updateActiveNav();
   if (
     window.innerWidth > 800 &&
     menuButton.getAttribute("aria-expanded") === "true"
