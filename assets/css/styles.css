@@ -470,6 +470,11 @@ h2 em {
 .service-row:hover {
   background: rgba(199, 243, 107, 0.06);
 }
+.service-icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-bottom: auto;
+}
 .service-row h3 {
   margin: 0 0 1rem;
   font-family: var(--display);
@@ -597,6 +602,11 @@ h2 em {
   padding-left: 1.7rem;
   padding-right: 1.7rem;
 }
+.event-card img {
+  width: 4rem;
+  height: 4rem;
+  flex: 0 0 4rem;
+}
 .event-card strong {
   font-family: var(--display);
   font-size: clamp(1.8rem, 3.5vw, 3.5rem);
@@ -610,8 +620,8 @@ h2 em {
 }
 .about-layout {
   display: grid;
-  grid-template-columns: minmax(360px, 1.15fr) minmax(320px, 0.85fr);
-  gap: clamp(3rem, 9vw, 10rem);
+  grid-template-columns: minmax(360px, 1.1fr) minmax(280px, 0.72fr) minmax(230px, 0.52fr);
+  gap: clamp(2rem, 5vw, 6rem);
   align-items: end;
 }
 .about-heading > .eyebrow {
@@ -643,6 +653,29 @@ h2 em {
   max-width: 620px;
   padding-top: 2rem;
   border-top: 1px solid var(--line);
+}
+.about-portrait {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: var(--ink);
+}
+.about-portrait img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center 56%;
+  filter: saturate(1.03) contrast(1.02);
+}
+.about-portrait figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 3.5rem 1rem 0.9rem;
+  color: white;
+  background: linear-gradient(transparent, rgba(5, 6, 6, 0.88));
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 .about-principle {
   display: grid;
@@ -857,11 +890,17 @@ h2 em {
   .site-nav {
     position: fixed;
     inset: 0;
+    width: 100%;
+    height: 100dvh;
+    min-height: 100svh;
     background: var(--ink);
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
-    padding: 4rem 2rem;
+    justify-content: flex-start;
+    gap: 0;
+    padding: max(7rem, calc(env(safe-area-inset-top) + 5.5rem)) 2rem max(2.5rem, calc(env(safe-area-inset-bottom) + 1.5rem));
+    overflow-y: auto;
+    overscroll-behavior: contain;
     transform: translateX(100%);
     transition: transform 0.35s;
   }
@@ -869,10 +908,21 @@ h2 em {
     transform: none;
   }
   .site-nav > a:not(.button) {
+    display: inline-block;
     font-family: var(--display);
     font-size: 2.2rem;
     text-transform: none;
     letter-spacing: -0.03em;
+    margin-bottom: 1.1rem;
+    outline: none;
+  }
+  .site-nav > a:not(.button):focus-visible,
+  .site-nav > a:not(.button):active {
+    color: white;
+    text-decoration: underline;
+    text-decoration-color: var(--lime);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.25em;
   }
   .site-nav .button {
     margin-top: 1rem;
@@ -949,6 +999,12 @@ h2 em {
   .about-principle {
     grid-template-columns: 1fr;
     gap: 2rem;
+  }
+  .about-heading {
+    grid-column: auto;
+  }
+  .about-portrait {
+    width: min(100%, 500px);
   }
   .footer-meta {
     flex-wrap: wrap;
@@ -1036,12 +1092,18 @@ h2 em {
     font-size: 3.5rem;
   }
 }
-@media (max-width: 1100px) {
+@media (min-width: 801px) and (max-width: 1100px) {
   .quote {
     grid-template-columns: 1fr;
   }
   .quote-intro {
     max-width: 720px;
+  }
+  .about-layout {
+    grid-template-columns: minmax(320px, 1fr) minmax(230px, 0.55fr);
+  }
+  .about-heading {
+    grid-column: 1 / -1;
   }
 }
 .hero h1,
